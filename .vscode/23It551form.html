@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+   *{
+    margin:0%;
+    padding:0%;
+   }
+     body{
+            padding:10px 50px;
+     }
+    
+    .formdesign{
+
+            font-size: 20px;
+
+    }
+    .formdesign input {
+                   width:50%;
+                   padding:12px 20px;
+                   border:1px solid blue;
+                   margin:14px;
+                   border-radius: 4px;
+                   font-size: 15px;
+    }
+    .formerror{
+               color:red;
+    }
+
+
+
+</style>
+</head>
+<body>
+    <h1>Welcome to best form </h1>
+    <form action="get.php" onsubmit=return validation form()>
+        <div class="formdesign" id="name">
+       
+            Name: <input type="text" name="fname">
+            <span class="formerror"><b>this an error</b></span>  
+           </div>
+        
+           <div class="formdesign" id="email">
+       
+            Email:<input type="text" name="femail">
+            <span class="formerror"><b>this an error</b></span>  
+           </div>
+        
+           <div class="formdesign" id="phone">
+       
+            phone number<input type="text" name="fphone">
+            <span class="formerror"><b></b></span>  
+           </div>
+    
+           <div class="formdesign" id="pass">
+           
+            password<input type="password" name="fpass">
+           <span class="formerror"><b></b></span>  
+          </div>
+   
+           <div class="formdesign" id="cpass">
+           
+            Confirm password<input type="password" name="cpass">
+            <span class="formerror"><b></b></span>  
+           </div>
+            <input class="but" type="submit" value="submit">
+
+    </form>
+<script>
+function  seterrors(id,error){
+            Element=document.getElementById(id);
+            
+}
+
+
+
+              function  validation form(){
+
+                var ret= true;
+                var name=document.forms('myform')["fname"].value;
+                if(name.length<5){
+                    seterrors("name","length is too short");
+                }
+
+
+
+              }
+   
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

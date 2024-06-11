@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+<style>
+
+    span{
+        display:none;
+
+}
+
+</style>
+
+
+
+</head>
+<body>
+      
+<form id="myForm">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="comment">Comment:</label><br>
+  <textarea id="comment" name="comment" required></textarea><br>
+  <input type="submit" value="Submit" onclick="return validateForm()">
+</form>
+
+
+
+                       <script>
+
+
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var comment = document.getElementById("comment").value;
+  if(name === "" || email === "" || comment === ""){
+    alert("All fields are required!");
+    return false;
+  } 
+ if(name.length<5){
+
+      alert("length should be short!");
+    return false;
+}
+
+else {
+    alert("Form submitted successfully!");
+    return true;
+  }
+}
+
+
+
+</script>
+          
+            </body>
+            </html>
+

@@ -1,0 +1,31 @@
+
+ <!DOCTYPE html>
+   <html>
+    <head>
+<title>form</title>
+</head>
+<body>
+       <form action="#" method="post" onsubmit= "return form()" id="myforms">
+        Name:<input type="text" id="name">
+        </br>
+        email:<input type="email" id="email">
+         </br>
+             <input type="password" id="password">
+</br>
+<button type="submit">submit</button>
+
+          </form>
+ <script>
+      function form(){
+
+      var name=document.forms["myforms"]["name"].value;
+      if(name.length<8)
+{
+             alert("the name can't be of the more then 8 length");
+              return false;
+}
+
+</script>
+
+</body>
+</html>
