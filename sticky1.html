@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin:auto;        
+        }
+
+        input[type="submit"]:hover {
+            background-color: #444;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <input type="text" name="title" id="title" placeholder="title">
+
+            <textarea name="content" id="content" placeholder="content"></textarea>
+            <input type="submit"value="save note"id=submit onclick="Create()">
+
+        </form>
+        <div id="output">
+
+        </div>
+    </div>
+    <script>        
+    
+        function Create(){
+            title = document.getElementById('title').value;
+            content = document.getElementById('content').value;
+
+            const note = {
+                title: title,
+                content: content,
+                date: new Date()
+            }
+
+            let notes = [];
+
+            if(localStorage.getItem('notes')){
+                notes = JSON.parse(localStorage.getItem('notes'));                
+            }
+
+            notes.push(note);
+
+            localStorage.setItem('notes', JSON.stringify(notes));
+
+            document.getElementById('title').value = '';
+            document.getElementById('content').value = '';
+
+            getdata();
+        }
+
+        async function getdata(){
+            let data=await fetch('https://jsonplaceholder.typicode.com/todos').then((response) => response.json()).then((res)=>res)
+            console.log("DATA", data)
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            
+            let output = '';
+
+            notes.forEach((note, index) => {
+                output += `
+                    <div>
+                        <h2>${note.title}</h2>
+                        <p>${note.content}</p>
+                        <small>${note.date}</small>
+                        <button onclick="edit(${index})">Edit</button>
+                        <button onclick="remove(${index})">Delete</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById('output').innerHTML = output;
+        }
+        
+        function edit(index){
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            let note = notes[index];
+
+            document.getElementById('title').value = note.title;
+            document.getElementById('content').value = note.content;
+
+            notes.splice(index, 1);
+            localStorage.setItem('notes', JSON.stringify(notes));
+
+            getdata();
+        }
+        
+        function remove(index){
+            let notes = JSON.parse(localStorage.getItem('notes'));
+            notes.splice(index, 1);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            getdata()
+        }
+        getdata()
+
+            
+    </script>
+</body>
+
+</html>
