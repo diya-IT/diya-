@@ -24,6 +24,33 @@
       <div>
         hii
       </div>
+      <script>
+        let myobejct={name:"diya",phone:"98383908383"}
+//console.log(">>>>>>>",myobejct.name,myobejct.phone)
+      Object.freeze(myobejct);
+      myobejct.name="ppp"
+
+      let ot={
+            name :"diya",
+            phone:"89829082",
+            fun:clr,
+             nestedobj:{
+                      key1:"value1",
+                      array:[2,3,4,5]
+             }
+      }
+      function clr(){
+             console.log("object called")
+      }
+console.log("function example",)
+ console.log(">>>>>>>",ot.nestedobj.array[3] ,Object.values(ot),Object.entries(ot))
+ let myobj2=ot
+ myobj2.name="dohdio"
+ console.log(">>>>>>>",myobj2,ot)
+ //spread opeartor
+ //myobj2={...myobj,address:"INDIA"}
+
+      </script>
       
 </body>
 </html>
